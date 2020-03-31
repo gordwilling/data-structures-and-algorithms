@@ -1,0 +1,2 @@
+Worst Case Time Complexity of Timsort is O(nlogn)
+Best is O(n)
