@@ -3,6 +3,8 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+import re
+from operator import itemgetter
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -43,3 +45,29 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+
+def is_bangalore_caller(call):
+    return call[0][:5] == "(080)"
+
+
+if __name__ == '__main__':
+    bangalore_calls = list(filter(is_bangalore_caller, calls))
+    bangalore_callees = map(itemgetter(1), bangalore_calls)
+    area_code_pattern = re.compile(r"^\((0\d+)\)\d+$")
+    mobile_pattern = re.compile(r"^([789]\d{3})\d*\s\d+$")
+    codes_and_prefixes = set()
+    for callee in bangalore_callees:
+        area_code_match = re.match(area_code_pattern, callee)
+        if area_code_match:
+            codes_and_prefixes.add(area_code_match.group(1))
+            continue
+
+        mobile_match = re.match(mobile_pattern, callee)
+        if mobile_match:
+            codes_and_prefixes.add(mobile_match.group(1))
+
+    codes_and_prefixes = sorted(codes_and_prefixes)
+    print("The numbers called by people in Bangalore have codes:")
+    for code_or_prefix in codes_and_prefixes:
+        print(code_or_prefix)

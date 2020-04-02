@@ -54,7 +54,7 @@ def call_duration_dict():
 
 if __name__ == '__main__':
     numbers = [[call[0], call[3]] for call in calls]
-
     total_durations = call_duration_dict()
     longest_caller = max(total_durations.items(), key=itemgetter(1))
-    print(f"{longest_caller[0]} spent the longest time, {longest_caller[1]} seconds, on the phone during September 2016.")
+    print(
+        f"{longest_caller[0]} spent the longest time, {longest_caller[1]} seconds, on the phone during September 2016.")
