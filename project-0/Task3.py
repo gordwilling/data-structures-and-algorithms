@@ -56,18 +56,23 @@ if __name__ == '__main__':
     bangalore_callees = map(itemgetter(1), bangalore_calls)
     area_code_pattern = re.compile(r"^\((0\d+)\)\d+$")
     mobile_pattern = re.compile(r"^([789]\d{3})\d*\s\d+$")
-    codes_and_prefixes = set()
+    codes_and_prefixes = []
     for callee in bangalore_callees:
         area_code_match = re.match(area_code_pattern, callee)
         if area_code_match:
-            codes_and_prefixes.add(area_code_match.group(1))
+            codes_and_prefixes.append(area_code_match.group(1))
             continue
 
         mobile_match = re.match(mobile_pattern, callee)
         if mobile_match:
-            codes_and_prefixes.add(mobile_match.group(1))
+            codes_and_prefixes.append(mobile_match.group(1))
 
-    codes_and_prefixes = sorted(codes_and_prefixes)
+    unique_codes_and_prefixes = sorted(set(codes_and_prefixes))
     print("The numbers called by people in Bangalore have codes:")
-    for code_or_prefix in codes_and_prefixes:
+    for code_or_prefix in unique_codes_and_prefixes:
         print(code_or_prefix)
+
+    total_calls = len(codes_and_prefixes)
+    calls_to_080 = codes_and_prefixes.count("080")
+    percent_calls_to_080 = (calls_to_080 / total_calls) * 100
+    print(f"{percent_calls_to_080:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
