@@ -1,0 +1,51 @@
+Analysis:
+
+NOTE: All analysis excludes the reading of files from disk into a list, where time
+      and space complexity are understood to be O(n)
+
+Task 0
+------
+Both calls retrieve an item from an array at a known index. Array lookups have O(1)
+time complexity
+
+Task 1
+------
+Counting unique numbers in the lists requires traversing the lists once each. The time
+complexity is therefore proportional to the length of the lists, or O(n)
+
+Task 2
+------
+Finding total call duration for each number involves traversing the lists twice, once to
+find outgoing call durations, and once to find incoming call durations.  Once those are
+found, each set of durations (one for each number) must be traversed to produce a sum. In
+the worst case scenario, each number could have called every other number, which means that
+for each number, a sum of n durations must be calculated. That suggests a worst case
+complexity of O(n^2).
+
+Task 3
+------
+Part A involves:
+
+    1. Traversing a list to find callers from Bangalore: O(n)
+    2. Finding the callees: O(n)
+    3. Traversing the callees list to match area codes and prefixes: O(n)
+    4. Sorting a unique set of codes and prefixes (length m) using Timsort: worst case O(mlogm)
+
+    In the worst case, all codes and prefixes would be unique, meaning m matches n. In such a
+    worst case, sorting the set governs time complexity O(nlogn)
+
+Part  B:
+
+    1. Traverse the list to count occurrences of the Bangalore area code and perform a
+       simple calculation. Worst case O(n) for traversing the list
+
+Task 4
+------
+This tasks requires traversing the lists a few times to identify callers of interest. This
+produces a few iterators that are combined into a set using the `union` operation.
+According to the python wiki (https://wiki.python.org/moin/TimeComplexity) time complexity
+for union on a set is worst case O(n * m). In the worst case, each list in the data would
+be the same as the input length. Because there are three data structures of (potential) length n
+being combined, worst case performance is O(n^3). In the end, everyone may be a telemarketer and sorting
+that data would be worst case O(nlogn), but that has no effect because O(n^3) is much worse.
+
