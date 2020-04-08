@@ -1,4 +1,4 @@
-# Udacity - Data Structures and Algorithms - Project 1, Problem 1
+# Udacity - Data Structures and Algorithms - Project 1
 
 ## Problem 1 - LRU Cache
 
