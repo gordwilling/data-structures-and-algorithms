@@ -2,7 +2,7 @@
 
 ## Problem 1 - LRU Cache
 
-The LRU cache must provide get and set operations with O(1) time complexity and O(n) space complexity.
+The LRU cache provides get and set operations with O(1) time complexity and O(n) space complexity.
 
 Key-value pairs can be stored in a python Dictionary which meets these complexity requirements. Key values are
 also stored in a Queue, which provides O(1) time access to the first and last elements in the collection. When the
