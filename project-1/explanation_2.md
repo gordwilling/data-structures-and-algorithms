@@ -3,4 +3,4 @@
 ## Problem 2 - Directory Traversal
 
 A file system is modeled as a tree, which suggests a recursive solution. Each directory node is recursively traversed
-to get its immediate children. The recursive traversal visits all items in the tree, making it an O(n) operation.
+to get its immediate children. Worst case is the recursive traversal visits all items in the tree, making it an O(n) operation.

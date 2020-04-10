@@ -30,11 +30,11 @@ def is_user_in_group(user: str, group: Group):
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
-    def loop(_group: Group):
-        users = _group.get_users()
+    def loop(g: Group):
+        users = g.get_users()
         if user in users:
             return True
-        child_groups = _group.get_groups()
+        child_groups = g.get_groups()
         for child_group in child_groups:
             return loop(child_group)
         return False

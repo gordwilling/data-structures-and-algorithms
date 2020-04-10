@@ -1,4 +1,4 @@
-from typing import Set
+from typing import Set, List
 
 
 class Node:
@@ -20,6 +20,7 @@ class LinkedList:
         while cur_head:
             out_string += str(cur_head.value) + " -> "
             cur_head = cur_head.next
+        out_string += "None"
         return out_string
 
     def append(self, value):
@@ -80,36 +81,34 @@ def _add_all_to_set(s: Set, ll: LinkedList):
         node = node.next
 
 
+def _ll(*args):
+    linked_list = LinkedList()
+    for i in args:
+        linked_list.append(i)
+    return linked_list
+
+
 if __name__ == '__main__':
-    # Test case 1
-    linked_list_1 = LinkedList()
-    linked_list_2 = LinkedList()
+    print(union(_ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21), _ll(6, 32, 4, 9, 6, 1, 11, 21, 1)))
+    # 32 -> 65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 9 -> 11 -> 21 -> None
 
-    element_1 = [3, 2, 4, 35, 6, 65, 6, 4, 3, 21]
-    element_2 = [6, 32, 4, 9, 6, 1, 11, 21, 1]
+    print(union(_ll(6, 32, 4, 9, 6, 1, 11, 21, 1), _ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21)))
+    # 32 -> 65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 9 -> 11 -> 21 -> None
 
-    for i in element_1:
-        linked_list_1.append(i)
+    print(union(LinkedList(), _ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21)))
+    # 3, 2, 4, 35, 6, 65, 6, 4, 3, 21 -> None
 
-    for i in element_2:
-        linked_list_2.append(i)
+    print(union(_ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21), LinkedList()))
+    # 3, 2, 4, 35, 6, 65, 6, 4, 3, 21 -> None
 
-    print(union(linked_list_1, linked_list_2))
-    print(intersection(linked_list_1, linked_list_2))
+    print(intersection(_ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21), _ll(6, 32, 4, 9, 6, 1, 11, 21, 1)))
+    # 4 -> 21 -> 6 -> None
 
-    # Test case 2
+    print(intersection(_ll(6, 32, 4, 9, 6, 1, 11, 21, 1), _ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21)))
+    # 4 -> 21 -> 6 -> None
 
-    linked_list_3 = LinkedList()
-    linked_list_4 = LinkedList()
+    print(intersection(LinkedList(), _ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21)))
+    # None
 
-    element_1 = [3, 2, 4, 35, 6, 65, 6, 4, 3, 23]
-    element_2 = [1, 7, 8, 9, 11, 21, 1]
-
-    for i in element_1:
-        linked_list_3.append(i)
-
-    for i in element_2:
-        linked_list_4.append(i)
-
-    print(union(linked_list_3, linked_list_4))
-    print(intersection(linked_list_3, linked_list_4))
+    print(intersection(_ll(3, 2, 4, 35, 6, 65, 6, 4, 3, 21), LinkedList()))
+    # None

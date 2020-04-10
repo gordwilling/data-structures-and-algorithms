@@ -19,9 +19,9 @@ Huffman encoding must produce two outputs:
 
 1. Generating the Huffman encoding tree is an iterative process wherein:
     1. a collection of data is inserted into a priority queue: O(n)
-    1. the priorty queue is used to give constant-time access to the two least frequence elements in the data
-        1. The two least frequent elements are used to create a node in the Huffman tree
-    1. The node is inserted into the priority queue, documented as O(logn) time complexity
+    1. the priorty queue is used to give constant-time access to the two least frequent elements in the data
+        1. The two least frequent elements are then used to create a node in the Huffman tree
+    1. The node is inserted into the priority queue, documented as O(logn) time complexity in the pydocs
     1. Steps ii and iii are repeated until there is only one node left in the queue (this is the root of the Huffman Tree)
     
  The number of elements inserted into the priority q is proportional to the amount of input, so time complexity for
@@ -29,7 +29,9 @@ Huffman encoding must produce two outputs:
  
  1. Encoding the data involves looking up the encoding in a map O(1), once for each element in the data, thus O(n) time complexity
  
- 1. Decoding the data involves walking the tree for each character in the encoded data, which is a worst case O(logn) each time, so O(nlogn) in total
+ 1. Decoding the data involves walking the tree for each character in the encoded data, which is a worst case O(logn) each time
+ 
+ Accordingly, time complexity is O(nlogn) 
  
  As for space, both the tree and priority queue require n elements to be stored, so space complexity is O(n) 
  
