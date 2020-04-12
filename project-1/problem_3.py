@@ -21,7 +21,7 @@ class Huffman_Node(object):
         return self.count < other.count
 
 
-def _char_count_nodes(data: str) -> List[Huffman_Node]:
+def char_count_nodes(data: str) -> List[Huffman_Node]:
     """
     Builds a list of Huffman Nodes, each containing a character and its frequency in the data string
 
@@ -47,7 +47,7 @@ def _char_count_nodes(data: str) -> List[Huffman_Node]:
     return nodes
 
 
-def _build_huffman_tree(q) -> Huffman_Node:
+def build_huffman_tree(q) -> Huffman_Node:
     """
     Builds the Huffman Tree from the bottom up
 
@@ -68,7 +68,7 @@ def _build_huffman_tree(q) -> Huffman_Node:
     return heapq.heappop(q)
 
 
-def _generate_huffman_encodings(huffman_root: Huffman_Node) -> Dict[str, str]:
+def generate_huffman_encodings(huffman_root: Huffman_Node) -> Dict[str, str]:
     """
     Generates a Huffman encoding map which can be used for encoding strings one character at a time
 
@@ -102,9 +102,9 @@ def huffman_encoding(data: str) -> Tuple[str, Huffman_Node]:
     Returns:
         The encoded string, and the Huffman tree required to decode the string
     """
-    char_count_nodes = _char_count_nodes(data)
-    huffman_tree = _build_huffman_tree(char_count_nodes)
-    encodings = _generate_huffman_encodings(huffman_tree)
+    char_counts = char_count_nodes(data)
+    huffman_tree = build_huffman_tree(char_counts)
+    encodings = generate_huffman_encodings(huffman_tree)
     encoded_data = "".join([encodings[char] for char in data])
     return encoded_data, huffman_tree
 
@@ -151,6 +151,13 @@ def test(data: str):
     print("--------------------------------------------------------------------------------")
 
 
+def test_except(data: str):
+    try:
+        test(data)
+    except ValueError:
+        print(f"{sys.exc_info()[0].__name__}: {sys.exc_info()[1]}")
+
+
 if __name__ == "__main__":
     test("The bird is the word")
     # The size of the data is: 45
@@ -176,8 +183,8 @@ if __name__ == "__main__":
     # The size of the decoded data is: 51
     # The content of the encoded data is: abcdefghijklmnopqrstuvwxyz
 
-    # test("")
+    test_except("")
     # ValueError: Cannot build a tree from an empty list
 
-    # test("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    test_except("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     # ValueError: Will not Huffman encode a string with only one character type
