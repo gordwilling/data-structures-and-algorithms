@@ -25,7 +25,7 @@ Huffman encoding must produce two outputs:
     1. Steps ii and iii are repeated until there is only one node left in the queue (this is the root of the Huffman Tree)
     
  The number of elements inserted into the priority q is proportional to the amount of input, so time complexity for
- building the tree is O(logn)
+ building the tree is: n elements * O(logn) insertion time, or O(nlogn)
  
  1. Encoding the data involves looking up the encoding in a map O(1), once for each element in the data, thus O(n) time complexity
  
