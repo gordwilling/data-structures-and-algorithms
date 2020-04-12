@@ -34,15 +34,15 @@ class Node:
 class BlockChain:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def add(self, value: str):
         if self.head is None:
             self.head = Node(Block(value))
+            self.tail = self.head
         else:
-            node = self.head
-            while node.next:
-                node = node.next
-            node.next = Node(Block(value, node.value.hash))
+            self.tail.next = Node(Block(value, self.tail.value.hash))
+            self.tail = self.tail.next
 
     def __str__(self):
         if self.head:
