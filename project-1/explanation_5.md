@@ -17,3 +17,5 @@ Tamper proofing comes from the previous hash being used in the new hash calculat
 Hash calculation involves applying a mathematical formula to each element of the input, making it linearly dependent 
 on the input length, so O(n) time complexity and constant O(1) space complexity.
 
+By maintaining a pointer to the tail of the BlockChain, the append operation can be done in constant time (after the hash has been calculated)
+
