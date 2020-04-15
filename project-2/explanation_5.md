@@ -1,6 +1,6 @@
 # Udacity - Data Structures and Algorithms - Project 2
 
-## Problem 4 - Autocomplete with Tries
+## Problem 5 - Autocomplete with Tries
 
 The time complexity for insert and find are O(m) where m is the length of the inserted word or search term. This could be
 considered constant as it is not related to the overall size of trie itself.
