@@ -2,8 +2,7 @@
 
 ## Problem 7 - Http Router using a Trie
 
-Searching for min and max takes one traversal of the list, thus is done in O(n) time. Space complexity is constant O(1)
+The time complexity for insert and find are O(m) where m is the number of elements in the path. This could be
+considered constant as it is not related to the overall size of trie itself.
 
-
-
-
+The space complexity is relative to the number of path elements stored in the trie, so O(n) where n is the number of path elements stored
