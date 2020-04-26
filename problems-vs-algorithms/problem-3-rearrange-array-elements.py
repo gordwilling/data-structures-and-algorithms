@@ -61,3 +61,5 @@ if __name__ == '__main__':
 
     print(rearrange_digits([-4, -6, -2, -5, -9, -8]))
     # [-469, -258]
+
+    print(rearrange_digits([1,2,3,4,5,6,7]))
