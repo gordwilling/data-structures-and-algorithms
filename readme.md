@@ -17,8 +17,7 @@ Warm up the Python with some introductory problems
 
 1. Floor of the square root in O(logn) time
 1. Search a rotated sorted array in O(logn) time
-1. Rearrange integer array elements to produce two numbers with the maximized sum
-    1. e.g. [4, 6, 2, 5, 9, 8] -> 852 + 964
+1. Rearrange integer array elements to produce two numbers with the maximized sum, for example: for input [4, 6, 2, 5, 9, 8], output (852, 964)
 1. Dutch National Flag problem
 1. Autocorrect using a Trie
 1. Find min and max in unsorted array in at most linear time
